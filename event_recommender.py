@@ -18,7 +18,7 @@ if prompt := st.chat_input():
     st.session_state.messages.append({"is_user": True, "text": prompt})
     st.chat_message(str(st.session_state.messages[-1]["is_user"]), avatar="🧑‍💻").write(prompt)
     with st.spinner("Thinking..."):
-        output = client.get_chat_response(deployment_token='34578b2b29984935b1a0f3d1e88d402c', deployment_id='1592987018', 
+        output = client.get_chat_response(deployment_token=st.secrets.deploy_creds.deploy_tok, deployment_id=st.secrets.deploy_creds.deploy_id, 
                                 messages=st.session_state.messages, 
                                 llm_name=None, 
                                 num_completion_tokens=700, 
